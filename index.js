@@ -3,7 +3,7 @@ let victoriasMaquina = 0;
 let INPUTFALSE = false;
 
 while (victoriasUsuario < 3 && victoriasMaquina < 3) {
-  let jugada = prompt("ElEGI: Piedra, Papel o Tijera");
+  let jugada = prompt("ELEGI: Piedra, Papel o Tijera");
 
   if (jugada === null) {
     alert("no valido! Intenta de nuevo.");
@@ -14,12 +14,20 @@ while (victoriasUsuario < 3 && victoriasMaquina < 3) {
   jugada = jugada.toLowerCase().trim();
 
   if (!["piedra", "papel", "tijera"].includes(jugada)) {
-    alert("Jugada no válida. Intenta nuevamente.");
+    alert("Seguro escribiste algo mal. Intenta de nuevo.");
     continue;
   }
 
-  const opciones = ["piedra", "papel", "tijera"];
-  const jugadaMaquina = opciones[Math.floor(Math.random() * opciones.length)];
+  const azar = Math.random();
+  let jugadaMaquina = "";
+
+  if (azar < 0.33) {
+    jugadaMaquina = "piedra";
+  } else if (azar < 0.66) {
+    jugadaMaquina = "papel";
+  } else {
+    jugadaMaquina = "tijera";
+  }
 
   alert(`La máquina eligió: ${jugadaMaquina}`);
 
@@ -31,14 +39,14 @@ while (victoriasUsuario < 3 && victoriasMaquina < 3) {
     (jugada === "tijera" && jugadaMaquina === "papel")
   ) {
     victoriasUsuario++;
-    alert(`Ganaste la ronda. Marcador: ${victoriasUsuario}-${victoriasMaquina}`);
+    alert(`Ganaste!. Puntos: ${victoriasUsuario}-${victoriasMaquina}`);
   } else {
     victoriasMaquina++;
-    alert(`La máquina gana la ronda. Marcador: ${victoriasUsuario}-${victoriasMaquina}`);
+    alert(`Perdiste la ronda contra una maquina sos malisimo. Puntos: ${victoriasUsuario}-${victoriasMaquina}`);
   }
 }
 if (!INPUTFALSE) {
   const campeon = victoriasUsuario > victoriasMaquina ? "el usuario" : "la máquina";
-  alert(`El campeón es ${campeon}. Resultado final: ${victoriasUsuario}-${victoriasMaquina}`);
+  alert(` Y el ganador es... ${campeon}. Puntos: ${victoriasUsuario}-${victoriasMaquina}`);
 }
 
