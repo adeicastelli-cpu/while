@@ -9,7 +9,7 @@ while (victoriasUsuario < 3 && victoriasMaquina < 3) {
     alert("no valido! Intenta de nuevo.");
     INPUTFALSE = true;
     break;
-  }
+  } 
 
   jugada = jugada.toLowerCase().trim();
 
